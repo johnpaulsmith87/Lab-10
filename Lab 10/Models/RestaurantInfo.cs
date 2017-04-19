@@ -16,7 +16,7 @@ namespace Lab_10.Models
             Name = restaurant.Name;
             Location = new Address()
             {
-                Street = restaurant.Location.City,
+                Street = restaurant.Location.Street,
                 City = restaurant.Location.City,
                 PostalCode = restaurant.Location.PostalCode,
                 Province = restaurant.Location.PostalCode

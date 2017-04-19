@@ -81,6 +81,8 @@
       <HintPath>..\packages\React.Web.Mvc4.3.0.1\lib\net40\React.Web.Mvc4.dll</HintPath>
     </Reference>
     <Reference Include="System.Runtime.Caching" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -128,7 +130,19 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Connected Services\RestaurantReviewService\Lab_10.RestaurantReviewService.RestaurantInfo.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <None Include="Connected Services\RestaurantReviewService\RestaurantReviewService.disco" />
+    <None Include="Connected Services\RestaurantReviewService\configuration91.svcinfo" />
+    <None Include="Connected Services\RestaurantReviewService\configuration.svcinfo" />
+    <None Include="Connected Services\RestaurantReviewService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
     <Content Include="Global.asax" />
+    <Content Include="Scripts\Js\bootstrap.min.js" />
+    <Content Include="Scripts\Js\jquery-2.2.4.min.js" />
     <Content Include="Scripts\Lab10.jsx" />
     <Content Include="Scripts\React\react-dom.js" />
     <Content Include="Scripts\React\react.js" />
@@ -137,16 +151,36 @@
   <ItemGroup>
     <Compile Include="App_Start\ReactConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="AsyncLock\AsyncLock.cs" />
+    <Compile Include="Connected Services\RestaurantReviewService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\RestaurantInfo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\web.config" />
     <Content Include="packages.config" />
     <Content Include="Views\Home\Index.cshtml" />
+    <None Include="Connected Services\RestaurantReviewService\RestaurantReviewService.wsdl" />
+    <None Include="Connected Services\RestaurantReviewService\RestaurantReviewService.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\RestaurantReviewService\RestaurantReviewService1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\RestaurantReviewService\RestaurantReviewService2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\RestaurantReviewService\RestaurantReviewService3.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -156,7 +190,12 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Models\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Connected Services\RestaurantReviewService\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

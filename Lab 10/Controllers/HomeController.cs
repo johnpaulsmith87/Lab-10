@@ -5,23 +5,29 @@ using System.Web;
 using System.Web.Mvc;
 using Lab_10.RestaurantReviewService;
 using System.Threading.Tasks;
-
+using Lab_10.AsyncLock;
 namespace Lab_10.Controllers
 {
+    [SessionState(System.Web.SessionState.SessionStateBehavior.ReadOnly)]
     public class HomeController : Controller
     {
+        private readonly AsyncLock.AsyncLock m_lock = new AsyncLock.AsyncLock();
+        
         // GET: Home
         public ActionResult Index()
         {
             return View();
         }
-        [HttpGet]
-        public async Task<ActionResult> Review()
+        public async Task<ActionResult> Reviews()
         {
-            var reviewer = new RestaurantReviewServiceClient();
-            var restaurants = await reviewer.GetRestaurantsByRatingAsync(0);
-            var jsonRestaurants = restaurants.Select(resto => new Models.RestaurantInfo(resto));
-            return Json(jsonRestaurants, JsonRequestBehavior.AllowGet);
+            HttpContext.Server.ScriptTimeout = 300;
+            using (var releaser = await m_lock.LockAsync())
+            {
+                var reviewer = new RestaurantReviewServiceClient();
+                var restaurants = await reviewer.GetRestaurantsByRatingAsync(0);
+                var jsonRestaurants = restaurants.Select(resto => new Models.RestaurantInfo(resto));
+                return Json(jsonRestaurants, JsonRequestBehavior.AllowGet);
+            }
         }
         [HttpPost]
         public async Task<ActionResult> UpdateReview(string restInfo)

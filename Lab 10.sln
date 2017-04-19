@@ -4,6 +4,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 VisualStudioVersion = 15.0.26228.12
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lab 10", "Lab 10\Lab 10.csproj", "{CF69CFDE-F081-4910-BEFB-79D28ACC70A6}"
+	ProjectSection(ProjectDependencies) = postProject
+		{8AB24E78-A466-4349-8D82-9188B9BE7CD2} = {8AB24E78-A466-4349-8D82-9188B9BE7CD2}
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RestaurantReviewService", "..\Lab9_WCF\RestaurantReviewService\RestaurantReviewService.csproj", "{8AB24E78-A466-4349-8D82-9188B9BE7CD2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +20,10 @@ Global
 		{CF69CFDE-F081-4910-BEFB-79D28ACC70A6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CF69CFDE-F081-4910-BEFB-79D28ACC70A6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CF69CFDE-F081-4910-BEFB-79D28ACC70A6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8AB24E78-A466-4349-8D82-9188B9BE7CD2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8AB24E78-A466-4349-8D82-9188B9BE7CD2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8AB24E78-A466-4349-8D82-9188B9BE7CD2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8AB24E78-A466-4349-8D82-9188B9BE7CD2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
