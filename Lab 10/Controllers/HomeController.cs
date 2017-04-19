@@ -26,6 +26,8 @@ namespace Lab_10.Controllers
                 var reviewer = new RestaurantReviewServiceClient();
                 var restaurants = await reviewer.GetRestaurantsByRatingAsync(0);
                 var jsonRestaurants = restaurants.Select(resto => new Models.RestaurantInfo(resto));
+                //Need to cleanse NovaScotia and BritishColumbia
+                
                 return Json(jsonRestaurants, JsonRequestBehavior.AllowGet);
             }
         }
